@@ -1,35 +1,35 @@
 # Session - [DATE YYYY-MM-DD]
 
-## 🎯 Objectifs de la Session
+## 🎯 Session Objectives
 
-### Objectif Principal
-- [ ] Décrire l'objectif principal de cette session
+### Main Objective
+- [ ] Describe the main objective of this session
 
-### Objectifs Secondaires
-- [ ] Objectif secondaire 1
-- [ ] Objectif secondaire 2
+### Secondary Objectives
+- [ ] Secondary objective 1
+- [ ] Secondary objective 2
 
-## ✅ Changements Réalisés
+## ✅ Changes Made
 
-### Fichiers Modifiés
-- `chemin/vers/fichier.py` - Description des modifications apportées
-- `autre/fichier.py` - Description des modifications
+### Modified Files
+- `path/to/file.py` - Description of changes made
+- `other/file.py` - Description of changes
 
-### Nouvelles Fonctionnalités
+### New Features
 
 #### 1. Feature Name
-**Description:** Description détaillée de la fonctionnalité
+**Description:** Detailed description of the feature
 
-**Fichiers touchés:**
-- `src/module/feature.py` - Nouvelle implémentation
-- `src/app.py` - Intégration de la feature
-- `tests/test_feature.py` - Tests unitaires
+**Files affected:**
+- `src/module/feature.py` - New implementation
+- `src/app.py` - Feature integration
+- `tests/test_feature.py` - Unit tests
 
-**Décisions techniques:**
-- Choix technique 1 et justification
-- Choix technique 2 et justification
+**Technical decisions:**
+- Technical choice 1 and justification
+- Technical choice 2 and justification
 
-**Exemple d'utilisation:**
+**Usage example:**
 ```python
 # Code example
 from src.module.feature import new_function
@@ -37,134 +37,134 @@ from src.module.feature import new_function
 result = new_function(param1, param2)
 ```
 
-### Corrections de Bugs
+### Bug Fixes
 
-#### Bug #1: Titre du Bug
-- **Symptôme:** Description du comportement erroné
-- **Cause:** Explication de la cause racine
-- **Solution:** Description de la correction apportée
-- **Fichiers modifiés:** Liste des fichiers
-- **Tests ajoutés:** Description des tests pour éviter la régression
+#### Bug #1: Bug Title
+- **Symptom:** Description of erroneous behavior
+- **Cause:** Explanation of root cause
+- **Solution:** Description of fix applied
+- **Modified files:** List of files
+- **Tests added:** Description of tests to prevent regression
 
-## 🔧 Décisions Techniques
+## 🔧 Technical Decisions
 
 ### Architecture
 
-#### Décision 1: [Titre de la décision]
-**Contexte:** Pourquoi cette décision était nécessaire
+#### Decision 1: [Decision Title]
+**Context:** Why this decision was necessary
 
-**Options considérées:**
-1. Option A - Avantages/Inconvénients
-2. Option B - Avantages/Inconvénients
-3. Option C - Avantages/Inconvénients
+**Options considered:**
+1. Option A - Pros/Cons
+2. Option B - Pros/Cons
+3. Option C - Pros/Cons
 
-**Décision finale:** Option choisie et justification détaillée
+**Final decision:** Chosen option and detailed justification
 
-**Impact:** Conséquences sur le projet
+**Impact:** Consequences on the project
 
-#### Décision 2: [Titre de la décision]
-[Même format que ci-dessus]
+#### Decision 2: [Decision Title]
+[Same format as above]
 
-### Dépendances
+### Dependencies
 
-#### Nouvelles Dépendances Ajoutées
-- `package-name==version` - Raison de l'ajout et utilisation
+#### New Dependencies Added
+- `package-name==version` - Reason for addition and usage
 
-#### Mises à Jour de Dépendances
-- `package-name` : version X.Y.Z → A.B.C - Raison de la mise à jour
+#### Dependency Updates
+- `package-name` : version X.Y.Z → A.B.C - Reason for update
 
-## 🐛 Problèmes Rencontrés
+## 🐛 Problems Encountered
 
-### Problème 1: [Titre du Problème]
+### Problem 1: [Problem Title]
 
 **Description:**
-Qu'est-ce qui n'a pas marché? Description détaillée du problème rencontré.
+What didn't work? Detailed description of the problem encountered.
 
-**Contexte:**
-- Environnement: développement/staging/production
-- Conditions de reproduction
-- Messages d'erreur observés
+**Context:**
+- Environment: development/staging/production
+- Reproduction conditions
+- Error messages observed
 
 **Investigation:**
-1. Première hypothèse testée
-2. Deuxième hypothèse testée
-3. Découverte de la cause racine
+1. First hypothesis tested
+2. Second hypothesis tested
+3. Discovery of root cause
 
 **Solution:**
-Comment le problème a été résolu, étape par étape.
+How the problem was resolved, step by step.
 
 **Learnings:**
-- Apprentissage 1: Ce qu'on a appris de ce problème
-- Apprentissage 2: Comment éviter ce problème à l'avenir
-- Documentation/tests ajoutés pour prévenir la récurrence
+- Learning 1: What we learned from this problem
+- Learning 2: How to avoid this problem in the future
+- Documentation/tests added to prevent recurrence
 
-**Temps passé:** X heures
+**Time spent:** X hours
 
 ## 📋 TODO
 
-### Priorité Haute 🔴
-- [ ] Tâche urgente 1 - Deadline: [DATE]
-- [ ] Tâche urgente 2 - Deadline: [DATE]
+### High Priority 🔴
+- [ ] Urgent task 1 - Deadline: [DATE]
+- [ ] Urgent task 2 - Deadline: [DATE]
 
-### Priorité Moyenne 🟡
-- [ ] Amélioration 1 - Estimation: X jours
-- [ ] Amélioration 2 - Estimation: X jours
+### Medium Priority 🟡
+- [ ] Improvement 1 - Estimate: X days
+- [ ] Improvement 2 - Estimate: X days
 
-### Priorité Basse 🟢
+### Low Priority 🟢
 - [ ] Nice to have 1
 - [ ] Nice to have 2
 
 ### Backlog 📝
-- [ ] Idée future 1
-- [ ] Idée future 2
+- [ ] Future idea 1
+- [ ] Future idea 2
 
-## 📊 Métriques (si applicable)
+## 📊 Metrics (if applicable)
 
 ### Tests
-- Tests passant: X/Y (XX%)
-- Coverage: XX% (↑↓ X% depuis dernière session)
-- Nouveaux tests ajoutés: X
+- Passing tests: X/Y (XX%)
+- Coverage: XX% (↑↓ X% since last session)
+- New tests added: X
 
 ### Performance
-- Temps de réponse moyen: XXms (↑↓ XXms)
-- Mémoire utilisée: XXMB (↑↓ XXMB)
-- Temps de build: XXs (↑↓ XXs)
+- Average response time: XXms (↑↓ XXms)
+- Memory used: XXMB (↑↓ XXMB)
+- Build time: XXs (↑↓ XXs)
 
 ### Code Quality
-- Lignes de code ajoutées: +XXX
-- Lignes de code supprimées: -XXX
-- Complexité cyclomatique moyenne: XX
-- Issues de linting résolues: XX
+- Lines of code added: +XXX
+- Lines of code removed: -XXX
+- Average cyclomatic complexity: XX
+- Linting issues resolved: XX
 
-## 🔗 Références
+## 🔗 References
 
 ### Documentation
-- [Lien vers doc pertinente](https://example.com)
-- [Article de blog](https://example.com)
+- [Link to relevant doc](https://example.com)
+- [Blog article](https://example.com)
 
 ### Issues & PRs
 - Issue #123: Description
 - PR #456: Description
 
-### Commits Associés
-- `abc123d` - Message de commit
-- `def456g` - Message de commit
+### Associated Commits
+- `abc123d` - Commit message
+- `def456g` - Commit message
 
-## 💡 Notes & Réflexions
+## 💡 Notes & Reflections
 
-### Ce qui a bien marché
-- Point positif 1
-- Point positif 2
+### What Worked Well
+- Positive point 1
+- Positive point 2
 
-### Ce qui pourrait être amélioré
-- Point d'amélioration 1
-- Point d'amélioration 2
+### What Could Be Improved
+- Improvement point 1
+- Improvement point 2
 
-### Idées pour le futur
-- Idée 1
-- Idée 2
+### Ideas for the Future
+- Idea 1
+- Idea 2
 
 ---
 
-**Durée de la session:** X heures
-**Prochaine session:** [DATE] - Focus sur [OBJECTIF]
+**Session duration:** X hours
+**Next session:** [DATE] - Focus on [OBJECTIVE]

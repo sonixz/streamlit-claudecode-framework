@@ -1,25 +1,25 @@
 # Architecture Documentation
 
-## 📋 Table des Matières
+## 📋 Table of Contents
 
-1. [Vue d'Ensemble](#vue-densemble)
-2. [Principes de Design](#principes-de-design)
-3. [Structure du Projet](#structure-du-projet)
-4. [Composants Principaux](#composants-principaux)
-5. [Flux de Données](#flux-de-données)
-6. [Décisions d'Architecture](#décisions-darchitecture)
-7. [Sécurité](#sécurité)
+1. [Overview](#overview)
+2. [Design Principles](#design-principles)
+3. [Project Structure](#project-structure)
+4. [Main Components](#main-components)
+5. [Data Flow](#data-flow)
+6. [Architecture Decisions](#architecture-decisions)
+7. [Security](#security)
 8. [Performance](#performance)
-9. [Déploiement](#déploiement)
+9. [Deployment](#deployment)
 
 ---
 
-## Vue d'Ensemble
+## Overview
 
 ### Description
-[Décrire brièvement ce que fait l'application]
+[Briefly describe what the application does]
 
-### Technologies Utilisées
+### Technologies Used
 - **Frontend/UI:** Streamlit
 - **Backend:** Python 3.11+
 - **Database:** [PostgreSQL / SQLite / MongoDB / etc.]
@@ -27,52 +27,52 @@
 - **Hosting:** Azure App Service
 - **CI/CD:** [GitHub Actions / Azure DevOps / etc.]
 
-### Objectifs Architecturaux
-1. **Simplicité:** Code clair et maintenable
-2. **Modularité:** Composants indépendants et réutilisables
-3. **Scalabilité:** Capable de gérer la croissance
-4. **Sécurité:** Protection des données et des accès
-5. **Performance:** Temps de réponse optimal
+### Architectural Goals
+1. **Simplicity:** Clear and maintainable code
+2. **Modularity:** Independent and reusable components
+3. **Scalability:** Able to handle growth
+4. **Security:** Data and access protection
+5. **Performance:** Optimal response time
 
 ---
 
-## Principes de Design
+## Design Principles
 
 ### 1. Separation of Concerns
-Chaque module a une responsabilité unique et bien définie.
+Each module has a single, well-defined responsibility.
 
 ### 2. DRY (Don't Repeat Yourself)
-Réutilisation du code via des fonctions et composants partagés.
+Code reuse through shared functions and components.
 
 ### 3. KISS (Keep It Simple, Stupid)
-Solutions simples privilégiées sur la complexité inutile.
+Simple solutions favored over unnecessary complexity.
 
 ### 4. YAGNI (You Aren't Gonna Need It)
-Implémenter uniquement ce qui est nécessaire maintenant.
+Implement only what is necessary now.
 
 ### 5. Fail Fast
-Détecter et signaler les erreurs le plus tôt possible.
+Detect and report errors as early as possible.
 
 ---
 
-## Structure du Projet
+## Project Structure
 
 ```
 streamlit-mvp/
-├── .claude/                    # Directives Claude Code
+├── .claude/                    # Claude Code directives
 │   └── instructions.md
 │
 ├── docs/                       # Documentation
-│   ├── ARCHITECTURE.md         # Ce fichier
-│   ├── CHANGELOG.md            # Historique des versions
-│   └── SESSION_SUMMARY.md      # Résumés de sessions
+│   ├── ARCHITECTURE.md         # This file
+│   ├── CHANGELOG.md            # Version history
+│   └── SESSION_SUMMARY.md      # Session summaries
 │
-├── src/                        # Code source
-│   ├── app.py                  # Point d'entrée Streamlit
+├── src/                        # Source code
+│   ├── app.py                  # Streamlit entry point
 │   │
-│   ├── components/             # Composants UI réutilisables
+│   ├── components/             # Reusable UI components
 │   │   ├── __init__.py
-│   │   ├── header.py           # Header de l'application
+│   │   ├── header.py           # Application header
 │   │   ├── sidebar.py          # Sidebar navigation
 │   │   └── footer.py           # Footer
 │   │
@@ -80,13 +80,13 @@ streamlit-mvp/
 │   │   ├── __init__.py
 │   │   └── settings.py         # Pydantic Settings
 │   │
-│   ├── utils/                  # Utilitaires
+│   ├── utils/                  # Utilities
 │   │   ├── __init__.py
-│   │   ├── helpers.py          # Fonctions helper générales
-│   │   ├── validators.py       # Validations custom
-│   │   └── formatters.py       # Formatage de données
+│   │   ├── helpers.py          # General helper functions
+│   │   ├── validators.py       # Custom validations
+│   │   └── formatters.py       # Data formatting
 │   │
-│   ├── services/               # Logique métier
+│   ├── services/               # Business logic
 │   │   ├── __init__.py
 │   │   └── [service_name].py
 │   │
@@ -100,82 +100,82 @@ streamlit-mvp/
 │   ├── test_services.py
 │   └── test_components.py
 │
-├── .env.example                # Template variables d'environnement
+├── .env.example                # Environment variables template
 ├── .gitignore                  # Git ignore rules
 ├── Dockerfile                  # Container definition
 ├── requirements.txt            # Python dependencies
 ├── startup.sh                  # Azure startup script
-└── README.md                   # Documentation principale
+└── README.md                   # Main documentation
 ```
 
 ---
 
-## Composants Principaux
+## Main Components
 
 ### 1. Application Entry Point (`src/app.py`)
 
-**Responsabilité:** Orchestration de l'application Streamlit
+**Responsibility:** Streamlit application orchestration
 
-**Fonctions clés:**
-- `initialize_session_state()`: Configuration du state
-- `configure_page()`: Configuration Streamlit
-- `main()`: Point d'entrée principal
+**Key Functions:**
+- `initialize_session_state()`: State configuration
+- `configure_page()`: Streamlit configuration
+- `main()`: Main entry point
 
-**Dépendances:**
+**Dependencies:**
 - `src.config.settings`
 - `src.components.*`
 - `src.services.*`
 
 ### 2. Configuration (`src/config/settings.py`)
 
-**Responsabilité:** Gestion centralisée de la configuration
+**Responsibility:** Centralized configuration management
 
-**Pattern:** Singleton avec Pydantic Settings
+**Pattern:** Singleton with Pydantic Settings
 
-**Variables gérées:**
+**Managed Variables:**
 - Application settings (APP_NAME, DEBUG, etc.)
 - Database credentials
 - API keys
 - External services configuration
 
-**Validation:** Automatique via Pydantic au démarrage
+**Validation:** Automatic via Pydantic at startup
 
 ### 3. Components (`src/components/`)
 
-**Responsabilité:** Composants UI réutilisables
+**Responsibility:** Reusable UI components
 
-**Composants standards:**
-- `header.py`: Header avec logo et navigation
-- `sidebar.py`: Sidebar avec menu
-- `footer.py`: Footer avec informations
+**Standard Components:**
+- `header.py`: Header with logo and navigation
+- `sidebar.py`: Sidebar with menu
+- `footer.py`: Footer with information
 
-**Pattern:** Fonctions render_* qui retournent void et utilisent st.* directement
+**Pattern:** render_* functions that return void and use st.* directly
 
 ### 4. Services (`src/services/`)
 
-**Responsabilité:** Logique métier et orchestration
+**Responsibility:** Business logic and orchestration
 
-**Pattern:** Classes ou modules fonctionnels selon la complexité
+**Pattern:** Classes or functional modules depending on complexity
 
-**Exemples:**
-- `auth_service.py`: Authentification et autorisation
-- `data_service.py`: Opérations sur les données
-- `api_service.py`: Intégration APIs externes
+**Examples:**
+- `auth_service.py`: Authentication and authorization
+- `data_service.py`: Data operations
+- `api_service.py`: External API integration
 
 ### 5. Utils (`src/utils/`)
 
-**Responsabilité:** Fonctions utilitaires partagées
+**Responsibility:** Shared utility functions
 
-**Caractéristiques:**
-- Pure functions (pas d'effets de bord)
-- Bien testées
-- Documentation complète
+**Characteristics:**
+- Pure functions (no side effects)
+- Well tested
+- Complete documentation
 
 ---
 
-## Flux de Données
+## Data Flow
 
-### Flux Principal
+### Main Flow
 
 ```
 User Input → Streamlit Widget → Session State → Service Layer → Data Layer → Response
@@ -183,7 +183,7 @@ User Input → Streamlit Widget → Session State → Service Layer → Data Lay
                                    UI Update
 ```
 
-### Exemple: Chargement de Données
+### Example: Data Loading
 
 ```python
 # 1. User interacts
@@ -206,7 +206,7 @@ if st.button("Load Data"):
 # Cache data expensive to compute
 @st.cache_data(ttl=3600)
 def fetch_external_data(api_url: str) -> pd.DataFrame:
-    """Cache pendant 1 heure."""
+    """Cache for 1 hour."""
     return requests.get(api_url).json()
 
 # Cache resources (DB connections, etc.)
@@ -218,118 +218,118 @@ def get_database_connection():
 
 ---
 
-## Décisions d'Architecture
+## Architecture Decisions
 
-### ADR-001: Pydantic pour la Configuration
+### ADR-001: Pydantic for Configuration
 
 **Date:** 2026-01-03
 
 **Status:** Accepted
 
 **Context:**
-Besoin de gérer les variables d'environnement avec validation.
+Need to manage environment variables with validation.
 
 **Decision:**
-Utiliser Pydantic Settings pour:
-- Validation automatique des types
-- Documentation auto-générée
-- Defaults et valeurs optionnelles
+Use Pydantic Settings for:
+- Automatic type validation
+- Auto-generated documentation
+- Defaults and optional values
 - IDE autocomplete
 
 **Consequences:**
-- ✅ Type safety au démarrage
-- ✅ Erreurs claires si config invalide
-- ❌ Dépendance supplémentaire
+- ✅ Type safety at startup
+- ✅ Clear errors if config is invalid
+- ❌ Additional dependency
 
-**Alternatives considérées:**
-1. python-decouple: Moins de validation
-2. dynaconf: Plus complexe pour nos besoins
+**Alternatives Considered:**
+1. python-decouple: Less validation
+2. dynaconf: More complex for our needs
 
 ---
 
-### ADR-002: Pas d'ORM pour le Moment
+### ADR-002: No ORM For Now
 
 **Date:** 2026-01-03
 
 **Status:** Accepted
 
 **Context:**
-Application simple sans relations complexes.
+Simple application without complex relationships.
 
 **Decision:**
-Utiliser SQL direct ou pandas pour data access.
+Use direct SQL or pandas for data access.
 
 **Consequences:**
-- ✅ Moins de dépendances
-- ✅ Queries SQL explicites
-- ❌ Pas de migrations automatiques
-- ❌ Plus de code boilerplate
+- ✅ Fewer dependencies
+- ✅ Explicit SQL queries
+- ❌ No automatic migrations
+- ❌ More boilerplate code
 
-**When to reconsider:**
-Si > 5 tables avec relations complexes → SQLAlchemy
+**When to Reconsider:**
+If > 5 tables with complex relationships → SQLAlchemy
 
 ---
 
-### ADR-003: [Votre Décision]
+### ADR-003: [Your Decision]
 
 **Date:** [DATE]
 
 **Status:** [Proposed | Accepted | Deprecated | Superseded]
 
 **Context:**
-[Décrivez le contexte et le problème]
+[Describe the context and problem]
 
 **Decision:**
-[Quelle décision a été prise et pourquoi]
+[What decision was made and why]
 
 **Consequences:**
-[Conséquences positives et négatives]
+[Positive and negative consequences]
 
-**Alternatives considérées:**
-[Autres options envisagées]
+**Alternatives Considered:**
+[Other options considered]
 
 ---
 
-## Sécurité
+## Security
 
-### Authentification
-- [ ] [Décrire le système d'auth si applicable]
+### Authentication
+- [ ] [Describe auth system if applicable]
 - [ ] [JWT / Session / OAuth / etc.]
 
-### Autorisation
-- [ ] [Gestion des rôles et permissions]
+### Authorization
+- [ ] [Role and permission management]
 - [ ] [RBAC / ABAC / etc.]
 
-### Protection des Données
-- [ ] Variables sensibles dans .env (jamais hardcodées)
-- [ ] .env dans .gitignore
-- [ ] Secrets Azure Key Vault en production
-- [ ] HTTPS obligatoire en production
+### Data Protection
+- [ ] Sensitive variables in .env (never hardcoded)
+- [ ] .env in .gitignore
+- [ ] Azure Key Vault secrets in production
+- [ ] HTTPS mandatory in production
 
-### Validation des Inputs
-- [ ] Pydantic models pour validation
-- [ ] Sanitization des inputs utilisateur
-- [ ] Protection CSRF (si applicable)
+### Input Validation
+- [ ] Pydantic models for validation
+- [ ] User input sanitization
+- [ ] CSRF protection (if applicable)
 
-### Logging Sécurisé
-- [ ] Pas de secrets dans les logs
-- [ ] Masking des données sensibles
-- [ ] Logs centralisés (Azure Monitor)
+### Secure Logging
+- [ ] No secrets in logs
+- [ ] Sensitive data masking
+- [ ] Centralized logs (Azure Monitor)
 
 ---
 
 ## Performance
 
-### Optimisations Streamlit
+### Streamlit Optimizations
 
 #### Caching
 ```python
-# Cache données (invalidé après TTL)
+# Cache data (invalidated after TTL)
 @st.cache_data(ttl=600)
 def expensive_computation(param):
     # ...
 
-# Cache resources (jamais invalidé automatiquement)
+# Cache resources (never automatically invalidated)
 @st.cache_resource
 def get_db_connection():
     # ...
@@ -337,60 +337,60 @@ def get_db_connection():
 
 #### Session State
 ```python
-# Éviter les recomputes
+# Avoid recomputes
 if 'processed_data' not in st.session_state:
     st.session_state.processed_data = process_data()
 
-# Réutiliser
+# Reuse
 data = st.session_state.processed_data
 ```
 
 ### Database
-- [ ] Indexes sur colonnes fréquemment queryées
+- [ ] Indexes on frequently queried columns
 - [ ] Connection pooling
 - [ ] Query optimization
-- [ ] Pagination pour grandes datasets
+- [ ] Pagination for large datasets
 
 ### Frontend
-- [ ] Lazy loading des composants lourds
-- [ ] Compression des images
-- [ ] Minimisation des re-renders
+- [ ] Lazy loading of heavy components
+- [ ] Image compression
+- [ ] Minimize re-renders
 
 ### Monitoring
 - [ ] Azure Application Insights
-- [ ] Temps de réponse des endpoints
-- [ ] Utilisation mémoire
-- [ ] Erreurs et exceptions
+- [ ] Endpoint response times
+- [ ] Memory usage
+- [ ] Errors and exceptions
 
 ---
 
-## Déploiement
+## Deployment
 
-### Environnements
+### Environments
 
 #### Development
 - Local machine
-- .env avec variables de dev
+- .env with dev variables
 - DEBUG=True
-- Hot reload activé
+- Hot reload enabled
 
 #### Staging
 - Azure App Service (Staging slot)
-- Variables d'environnement via Azure
+- Environment variables via Azure
 - DEBUG=False
-- Tests d'intégration automatiques
+- Automatic integration tests
 
 #### Production
 - Azure App Service (Production slot)
 - Secrets via Azure Key Vault
 - DEBUG=False
-- Monitoring actif
-- Backup automatique
+- Active monitoring
+- Automatic backup
 
 ### CI/CD Pipeline
 
 ```yaml
-# .github/workflows/deploy.yml (exemple)
+# .github/workflows/deploy.yml (example)
 name: Deploy to Azure
 
 on:
@@ -414,9 +414,9 @@ jobs:
 ```
 
 ### Rollback Strategy
-- Azure Deployment Slots pour swap instant
-- Keep last 3 versions déployées
-- Plan de rollback documenté
+- Azure Deployment Slots for instant swap
+- Keep last 3 deployed versions
+- Documented rollback plan
 
 ---
 
@@ -424,39 +424,39 @@ jobs:
 
 ### Logs
 - **Location:** Azure App Service Logs
-- **Retention:** 30 jours
+- **Retention:** 30 days
 - **Analysis:** Azure Monitor / Log Analytics
 
 ### Backups
-- **Database:** Backup quotidien automatique
-- **Config:** Versionné dans git
-- **Retention:** 7 jours (rolling)
+- **Database:** Automatic daily backup
+- **Config:** Versioned in git
+- **Retention:** 7 days (rolling)
 
 ### Monitoring Alerts
-- [ ] Temps de réponse > 2s
+- [ ] Response time > 2s
 - [ ] Error rate > 1%
 - [ ] Memory usage > 80%
 - [ ] Disk usage > 85%
 
 ---
 
-## Évolution Future
+## Future Evolution
 
-### Roadmap Technique
+### Technical Roadmap
 
-#### Court Terme (1-3 mois)
-- [ ] Ajout de tests d'intégration
-- [ ] Amélioration monitoring
-- [ ] Documentation API
+#### Short Term (1-3 months)
+- [ ] Add integration tests
+- [ ] Improve monitoring
+- [ ] API documentation
 
-#### Moyen Terme (3-6 mois)
-- [ ] Migration vers microservices (si nécessaire)
-- [ ] Cache distribué (Redis)
-- [ ] CDN pour assets statiques
+#### Medium Term (3-6 months)
+- [ ] Migrate to microservices (if necessary)
+- [ ] Distributed cache (Redis)
+- [ ] CDN for static assets
 
-#### Long Terme (6-12 mois)
+#### Long Term (6-12 months)
 - [ ] Multi-region deployment
-- [ ] Auto-scaling avancé
+- [ ] Advanced auto-scaling
 - [ ] Machine Learning pipeline
 
 ---

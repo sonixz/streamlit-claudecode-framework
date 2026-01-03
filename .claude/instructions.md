@@ -1,40 +1,40 @@
 # Streamlit MVP Framework - Claude Code Instructions
 
 ## 🎯 Mission
-Maintenir un code Python professionnel, documenté, et déployable sur Azure App Service pour tous les projets Streamlit.
+Maintain professional, documented Python code that's deployable to Azure App Service for all Streamlit projects.
 
-## 📝 Standards de Documentation
+## 📝 Documentation Standards
 
-### 1. Code Python - Documentation Obligatoire
+### 1. Python Code - Mandatory Documentation
 
-**Règle d'or:** Tout code dans `src/` doit être documenté avec des docstrings Google-style.
+**Golden Rule:** All code in `src/` must be documented with Google-style docstrings.
 
-#### Type Hints Obligatoires
-- Tous les paramètres de fonction
-- Tous les retours de fonction
-- Variables complexes
+#### Mandatory Type Hints
+- All function parameters
+- All function returns
+- Complex variables
 
-#### Format des Docstrings
+#### Docstring Format
 
 ```python
 def process_user_data(user_id: int, data: dict[str, Any]) -> UserModel:
     """
-    Traite les données utilisateur et retourne un modèle validé.
+    Process user data and return a validated model.
 
-    Cette fonction valide les données brutes, applique les transformations
-    nécessaires, et retourne une instance du modèle utilisateur.
+    This function validates raw data, applies necessary transformations,
+    and returns a user model instance.
 
     Args:
-        user_id: Identifiant unique de l'utilisateur (doit être > 0)
-        data: Dictionnaire contenant les données brutes de l'utilisateur
-            Format attendu: {"name": str, "email": str, "age": int}
+        user_id: Unique user identifier (must be > 0)
+        data: Dictionary containing raw user data
+            Expected format: {"name": str, "email": str, "age": int}
 
     Returns:
-        UserModel: Instance du modèle utilisateur validé avec tous les champs
+        UserModel: Validated user model instance with all fields
 
     Raises:
-        ValueError: Si user_id est négatif ou zéro
-        ValidationError: Si les données ne passent pas la validation Pydantic
+        ValueError: If user_id is negative or zero
+        ValidationError: If data fails Pydantic validation
 
     Example:
         >>> user_data = {"name": "John", "email": "john@example.com", "age": 30}
@@ -43,95 +43,95 @@ def process_user_data(user_id: int, data: dict[str, Any]) -> UserModel:
         'John'
     """
     if user_id <= 0:
-        raise ValueError(f"user_id doit être positif, reçu: {user_id}")
+        raise ValueError(f"user_id must be positive, received: {user_id}")
 
-    # Validation et traitement...
+    # Validation and processing...
     return UserModel(**data)
 ```
 
-#### Commentaires en Français
-- Expliquer la logique complexe
-- Documenter les décisions techniques
-- Clarifier les "pourquoi" pas seulement les "quoi"
+#### Comments in English
+- Explain complex logic
+- Document technical decisions
+- Clarify the "why" not just the "what"
 
 ```python
-# Utilisation de cache pour éviter les appels API répétés
-# Performance critique: cette fonction est appelée à chaque render
+# Use cache to avoid repeated API calls
+# Performance critical: this function is called on every render
 @st.cache_data(ttl=3600)
 def fetch_user_data(user_id: int) -> dict[str, Any]:
-    """Récupère les données utilisateur depuis l'API."""
+    """Fetch user data from the API."""
     # ...
 ```
 
-### 2. Fichiers de Suivi Obligatoires
+### 2. Mandatory Tracking Files
 
 #### SESSION_SUMMARY.md
 
-**Quand:** Créer/mettre à jour après chaque session de développement significative
+**When:** Create/update after each significant development session
 
-**Format Standard:**
+**Standard Format:**
 ```markdown
 # Session - [DATE YYYY-MM-DD]
 
-## 🎯 Objectifs de la Session
-- Objectif principal
-- Objectifs secondaires
+## 🎯 Session Goals
+- Primary objective
+- Secondary objectives
 
-## ✅ Changements Réalisés
+## ✅ Changes Made
 
-### Fichiers Modifiés
-- `src/app.py` - Description des modifications
-- `src/utils/helpers.py` - Nouvelles fonctions ajoutées
-- `docs/CHANGELOG.md` - Mise à jour
+### Modified Files
+- `src/app.py` - Description of modifications
+- `src/utils/helpers.py` - New functions added
+- `docs/CHANGELOG.md` - Updated
 
-### Nouvelles Fonctionnalités
-1. **Feature Name** - Description détaillée
-   - Fichiers touchés
-   - Décisions techniques prises
+### New Features
+1. **Feature Name** - Detailed description
+   - Files affected
+   - Technical decisions made
 
-### Corrections de Bugs
-- **Bug #1**: Description du problème et de la solution
-- **Bug #2**: Description du problème et de la solution
+### Bug Fixes
+- **Bug #1**: Problem description and solution
+- **Bug #2**: Problem description and solution
 
-## 🔧 Décisions Techniques
+## 🔧 Technical Decisions
 
 ### Architecture
-- Décision 1: Pourquoi et comment
-- Décision 2: Alternatives considérées et choix final
+- Decision 1: Why and how
+- Decision 2: Alternatives considered and final choice
 
-### Dépendances
-- Nouvelles dépendances ajoutées et justification
-- Mises à jour de dépendances existantes
+### Dependencies
+- New dependencies added and justification
+- Updates to existing dependencies
 
-## 🐛 Problèmes Rencontrés
+## 🐛 Problems Encountered
 
-### Problème 1
-- **Description:** Qu'est-ce qui n'a pas marché
-- **Solution:** Comment ça a été résolu
-- **Learnings:** Ce qu'on a appris
+### Problem 1
+- **Description:** What didn't work
+- **Solution:** How it was resolved
+- **Learnings:** What we learned
 
 ## 📋 TODO
 
-### Priorité Haute
-- [ ] Tâche urgente 1
-- [ ] Tâche urgente 2
+### High Priority
+- [ ] Urgent task 1
+- [ ] Urgent task 2
 
-### Priorité Moyenne
-- [ ] Amélioration 1
-- [ ] Amélioration 2
+### Medium Priority
+- [ ] Improvement 1
+- [ ] Improvement 2
 
-### Priorité Basse
+### Low Priority
 - [ ] Nice to have 1
 
-## 📊 Métriques (si applicable)
-- Tests passant: X/Y
+## 📊 Metrics (if applicable)
+- Tests passing: X/Y
 - Coverage: XX%
-- Performance: amélioration/dégradation notée
+- Performance: improvement/degradation noted
 
-## 🔗 Références
-- Links vers documentation pertinente
-- Issues GitHub liées
-- PRs associées
+## 🔗 References
+- Links to relevant documentation
+- Related GitHub issues
+- Associated PRs
 ```
 
 #### CHANGELOG.md
@@ -180,24 +180,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bug in authentication flow
 ```
 
-### 3. Structure du Code Python
+### 3. Python Code Structure
 
-#### Organisation en Fonctions
+#### Function Organization
 
-**Règles Strictes:**
-1. **Pas de code en vrac** - Tout dans des fonctions
-2. **Fonctions courtes** - Maximum 50 lignes (idéal: 20-30)
-3. **Single Responsibility** - Une fonction = une responsabilité
-4. **Nommage clair** - Le nom doit expliquer ce que fait la fonction
+**Strict Rules:**
+1. **No loose code** - Everything in functions
+2. **Short functions** - Maximum 50 lines (ideal: 20-30)
+3. **Single Responsibility** - One function = one responsibility
+4. **Clear naming** - Name should explain what the function does
 
-**Structure Standard de app.py:**
+**Standard app.py Structure:**
 
 ```python
 """
-Application Streamlit principale.
+Main Streamlit application.
 
-Ce module orchestre l'interface utilisateur et coordonne
-les différents composants de l'application MVP.
+This module orchestrates the user interface and coordinates
+the different components of the MVP application.
 
 Author: The Streamlit Guy
 Date: 2026-01-03
@@ -216,14 +216,14 @@ def initialize_session_state() -> None:
     """
     Initialize Streamlit session state variables.
 
-    Cette fonction configure toutes les variables de session nécessaires
-    au bon fonctionnement de l'application. Elle est idempotente et peut
-    être appelée plusieurs fois sans effet de bord.
+    This function configures all necessary session variables
+    for the application to function properly. It's idempotent and can
+    be called multiple times without side effects.
 
     Session State Variables:
-        user (Optional[dict]): Informations de l'utilisateur connecté
-        page (str): Page courante de l'application
-        data_loaded (bool): Indicateur si les données ont été chargées
+        user (Optional[dict]): Logged-in user information
+        page (str): Current application page
+        data_loaded (bool): Indicator if data has been loaded
     """
     if 'user' not in st.session_state:
         st.session_state.user = None
@@ -237,10 +237,9 @@ def initialize_session_state() -> None:
 
 def configure_page() -> None:
     """
-    Configure la page Streamlit avec les paramètres de base.
+    Configure Streamlit page with basic settings.
 
-    Définit le titre, l'icône, le layout et autres configurations
-    de la page Streamlit.
+    Sets the title, icon, layout and other Streamlit page configurations.
     """
     settings = get_settings()
 
@@ -254,21 +253,21 @@ def configure_page() -> None:
 
 def main() -> None:
     """
-    Point d'entrée principal de l'application Streamlit.
+    Main entry point for the Streamlit application.
 
-    Cette fonction orchestre l'initialisation et le rendu de l'application.
-    Elle doit rester simple et déléguer la logique complexe à d'autres fonctions.
+    This function orchestrates the initialization and rendering of the application.
+    It should remain simple and delegate complex logic to other functions.
     """
     # Configuration
     setup_logging()
     configure_page()
     initialize_session_state()
 
-    # Rendu de l'interface
+    # Render interface
     render_header()
     render_sidebar()
 
-    # Logique principale basée sur la page courante
+    # Main logic based on current page
     page = st.session_state.page
 
     if page == 'home':
@@ -276,17 +275,17 @@ def main() -> None:
     elif page == 'dashboard':
         render_dashboard_page()
     else:
-        st.error(f"Page inconnue: {page}")
+        st.error(f"Unknown page: {page}")
 
 
 def render_home_page() -> None:
-    """Rend la page d'accueil de l'application."""
-    st.title("🏠 Accueil")
-    st.write("Bienvenue dans votre application Streamlit MVP!")
+    """Render the home page of the application."""
+    st.title("🏠 Home")
+    st.write("Welcome to your Streamlit MVP application!")
 
 
 def render_dashboard_page() -> None:
-    """Rend la page de dashboard avec métriques."""
+    """Render the dashboard page with metrics."""
     st.title("📊 Dashboard")
     # Logic...
 
@@ -295,14 +294,14 @@ if __name__ == "__main__":
     main()
 ```
 
-#### Modularité
+#### Modularity
 
 **src/utils/helpers.py:**
 ```python
 """
-Fonctions utilitaires partagées.
+Shared utility functions.
 
-Ce module contient les fonctions helper réutilisables à travers l'application.
+This module contains reusable helper functions across the application.
 """
 
 import logging
@@ -311,10 +310,10 @@ from typing import Any
 
 def setup_logging(level: str = "INFO") -> None:
     """
-    Configure le système de logging de l'application.
+    Configure the application logging system.
 
     Args:
-        level: Niveau de logging (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
     """
     logging.basicConfig(
         level=getattr(logging, level),
@@ -324,15 +323,15 @@ def setup_logging(level: str = "INFO") -> None:
 
 def safe_get(data: dict[str, Any], key: str, default: Any = None) -> Any:
     """
-    Récupère une valeur d'un dictionnaire de manière sécurisée.
+    Safely retrieve a value from a dictionary.
 
     Args:
-        data: Dictionnaire source
-        key: Clé à récupérer
-        default: Valeur par défaut si la clé n'existe pas
+        data: Source dictionary
+        key: Key to retrieve
+        default: Default value if key doesn't exist
 
     Returns:
-        La valeur associée à la clé ou la valeur par défaut
+        The value associated with the key or the default value
 
     Example:
         >>> data = {"name": "John"}
@@ -344,18 +343,18 @@ def safe_get(data: dict[str, Any], key: str, default: Any = None) -> Any:
     return data.get(key, default)
 ```
 
-### 4. Gestion des Variables d'Environnement
+### 4. Environment Variable Management
 
-#### .env.example - Template Obligatoire
+#### .env.example - Mandatory Template
 
-Ce fichier DOIT être présent dans chaque repo et mis à jour quand de nouvelles variables sont ajoutées.
+This file MUST be present in each repo and updated when new variables are added.
 
 ```bash
 # =============================================================================
 # STREAMLIT MVP - ENVIRONMENT VARIABLES
 # =============================================================================
-# Copier ce fichier vers .env et remplir avec vos vraies valeurs
-# Ne JAMAIS commiter le fichier .env !
+# Copy this file to .env and fill in your actual values
+# NEVER commit the .env file!
 
 # -----------------------------------------------------------------------------
 # Application Settings
@@ -373,27 +372,27 @@ STREAMLIT_SERVER_ADDRESS=0.0.0.0
 STREAMLIT_SERVER_HEADLESS=True
 
 # -----------------------------------------------------------------------------
-# Azure App Service (si déployé)
+# Azure App Service (if deployed)
 # -----------------------------------------------------------------------------
 AZURE_SUBSCRIPTION_ID=your-subscription-id-here
 AZURE_RESOURCE_GROUP=your-resource-group
 AZURE_APP_SERVICE_NAME=your-app-service-name
 
 # -----------------------------------------------------------------------------
-# Database (si applicable)
+# Database (if applicable)
 # -----------------------------------------------------------------------------
 DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 DATABASE_POOL_SIZE=5
 DATABASE_MAX_OVERFLOW=10
 
 # -----------------------------------------------------------------------------
-# API Keys (si applicable)
+# API Keys (if applicable)
 # -----------------------------------------------------------------------------
 OPENAI_API_KEY=sk-your-openai-key-here
 ANTHROPIC_API_KEY=your-anthropic-key-here
 
 # -----------------------------------------------------------------------------
-# External Services (si applicable)
+# External Services (if applicable)
 # -----------------------------------------------------------------------------
 REDIS_URL=redis://localhost:6379/0
 SMTP_HOST=smtp.gmail.com
@@ -409,14 +408,14 @@ JWT_SECRET=your-jwt-secret-here
 ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
 ```
 
-#### Configuration avec Pydantic (src/config/settings.py)
+#### Configuration with Pydantic (src/config/settings.py)
 
 ```python
 """
-Configuration de l'application avec validation Pydantic.
+Application configuration with Pydantic validation.
 
-Ce module gère toutes les variables d'environnement et
-assure leur validation au démarrage de l'application.
+This module manages all environment variables and
+ensures their validation at application startup.
 """
 
 from functools import lru_cache
@@ -428,10 +427,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     """
-    Configuration principale de l'application.
+    Main application configuration.
 
-    Toutes les variables d'environnement sont chargées et validées
-    automatiquement via Pydantic Settings.
+    All environment variables are automatically loaded and validated
+    via Pydantic Settings.
     """
 
     model_config = SettingsConfigDict(
@@ -460,32 +459,32 @@ class Settings(BaseSettings):
     @field_validator("APP_ENV")
     @classmethod
     def validate_env(cls, v: str) -> str:
-        """Valide que l'environnement est valide."""
+        """Validate that the environment is valid."""
         allowed = ["development", "staging", "production"]
         if v not in allowed:
-            raise ValueError(f"APP_ENV doit être dans {allowed}")
+            raise ValueError(f"APP_ENV must be one of {allowed}")
         return v
 
     @field_validator("LOG_LEVEL")
     @classmethod
     def validate_log_level(cls, v: str) -> str:
-        """Valide que le niveau de log est valide."""
+        """Validate that the log level is valid."""
         allowed = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
         if v.upper() not in allowed:
-            raise ValueError(f"LOG_LEVEL doit être dans {allowed}")
+            raise ValueError(f"LOG_LEVEL must be one of {allowed}")
         return v.upper()
 
 
 @lru_cache
 def get_settings() -> Settings:
     """
-    Récupère l'instance singleton des settings.
+    Get the singleton settings instance.
 
-    Utilise lru_cache pour ne charger les settings qu'une seule fois
-    et les réutiliser ensuite.
+    Uses lru_cache to load settings only once
+    and reuse them afterward.
 
     Returns:
-        Instance de Settings validée
+        Validated Settings instance
 
     Example:
         >>> settings = get_settings()
@@ -495,12 +494,12 @@ def get_settings() -> Settings:
     return Settings()
 ```
 
-### 5. Configuration pour Azure App Service
+### 5. Azure App Service Configuration
 
-#### Dockerfile Standard
+#### Standard Dockerfile
 
 ```dockerfile
-# Streamlit MVP - Dockerfile pour Azure App Service
+# Streamlit MVP - Dockerfile for Azure App Service
 FROM python:3.11-slim
 
 # Metadata
@@ -546,7 +545,7 @@ CMD ["streamlit", "run", "src/app.py", \
      "--browser.gatherUsageStats=false"]
 ```
 
-#### startup.sh - Script de Démarrage Azure
+#### startup.sh - Azure Startup Script
 
 ```bash
 #!/bin/bash
@@ -574,7 +573,7 @@ streamlit run src/app.py \
 
 ### 6. Git Standards
 
-#### .gitignore Standard
+#### Standard .gitignore
 
 ```gitignore
 # Python
@@ -648,28 +647,28 @@ temp/
 *.tmp
 ```
 
-#### Format des Commits
+#### Commit Format
 
-**Standard Conventional Commits:**
+**Conventional Commits Standard:**
 
 ```
-<type>: <description courte>
+<type>: <short description>
 
-<body optionnel - description détaillée>
+<optional body - detailed description>
 
-<footer optionnel - références et co-auteurs>
+<optional footer - references and co-authors>
 ```
 
-**Types Standards:**
-- `feat`: Nouvelle fonctionnalité
-- `fix`: Correction de bug
-- `docs`: Documentation seulement
-- `style`: Formatage (pas de changement de code)
-- `refactor`: Refactoring (pas de feat ni fix)
-- `test`: Ajout ou modification de tests
+**Standard Types:**
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation only
+- `style`: Formatting (no code change)
+- `refactor`: Refactoring (no feat or fix)
+- `test`: Adding or modifying tests
 - `chore`: Maintenance (deps, config, etc.)
 
-**Exemple:**
+**Example:**
 ```bash
 git commit -m "$(cat <<'EOF'
 feat: add user authentication with JWT
@@ -691,15 +690,15 @@ EOF
 )"
 ```
 
-### 7. Tests (Optionnel mais Recommandé)
+### 7. Tests (Optional but Recommended)
 
-#### Structure des Tests
+#### Test Structure
 
 ```python
 """
-Tests pour les fonctions utilitaires.
+Tests for utility functions.
 
-Ce module teste toutes les fonctions du module utils.helpers.
+This module tests all functions in the utils.helpers module.
 """
 
 import pytest
@@ -707,106 +706,106 @@ from src.utils.helpers import safe_get, setup_logging
 
 
 class TestSafeGet:
-    """Tests pour la fonction safe_get."""
+    """Tests for the safe_get function."""
 
     def test_safe_get_existing_key(self):
-        """Test récupération d'une clé existante."""
+        """Test retrieving an existing key."""
         data = {"name": "John", "age": 30}
         assert safe_get(data, "name") == "John"
         assert safe_get(data, "age") == 30
 
     def test_safe_get_missing_key_with_default(self):
-        """Test récupération d'une clé manquante avec valeur par défaut."""
+        """Test retrieving a missing key with default value."""
         data = {"name": "John"}
         assert safe_get(data, "age", 0) == 0
         assert safe_get(data, "email", "default@example.com") == "default@example.com"
 
     def test_safe_get_missing_key_without_default(self):
-        """Test récupération d'une clé manquante sans valeur par défaut."""
+        """Test retrieving a missing key without default value."""
         data = {"name": "John"}
         assert safe_get(data, "age") is None
 
 
 class TestSetupLogging:
-    """Tests pour la fonction setup_logging."""
+    """Tests for the setup_logging function."""
 
     def test_setup_logging_default_level(self):
-        """Test configuration logging avec niveau par défaut."""
+        """Test logging configuration with default level."""
         setup_logging()
         # Verify logging is configured...
 
     def test_setup_logging_custom_level(self):
-        """Test configuration logging avec niveau custom."""
+        """Test logging configuration with custom level."""
         setup_logging("DEBUG")
         # Verify logging level is DEBUG...
 ```
 
-## 🚫 Interdictions Strictes
+## 🚫 Strict Prohibitions
 
 ### 1. Documentation
-- ❌ **Jamais de fonction sans docstring** dans src/
-- ❌ **Jamais de code complexe sans commentaire**
-- ❌ **Jamais de paramètre sans type hint**
+- ❌ **Never a function without docstring** in src/
+- ❌ **Never complex code without comments**
+- ❌ **Never a parameter without type hint**
 
-### 2. Sécurité
-- ❌ **Jamais de secrets hardcodés** dans le code
-- ❌ **Jamais de .env commité** dans git
-- ❌ **Jamais d'API key en clair** dans les logs
+### 2. Security
+- ❌ **Never hardcoded secrets** in code
+- ❌ **Never commit .env** to git
+- ❌ **Never API keys in clear text** in logs
 
 ### 3. Code Quality
-- ❌ **Jamais de print()** (utiliser logging ou st.write)
-- ❌ **Jamais de fonctions > 100 lignes** (refactor obligatoire)
-- ❌ **Jamais de code dupliqué** (DRY principle)
-- ❌ **Jamais de variables globales mutables**
+- ❌ **Never use print()** (use logging or st.write)
+- ❌ **Never functions > 100 lines** (mandatory refactor)
+- ❌ **Never duplicate code** (DRY principle)
+- ❌ **Never mutable global variables**
 
 ### 4. Streamlit Specifics
-- ❌ **Jamais de st.write() pour les erreurs** (utiliser st.error)
-- ❌ **Jamais de calculs lourds sans @st.cache_data**
-- ❌ **Jamais de state management anarchique**
+- ❌ **Never st.write() for errors** (use st.error)
+- ❌ **Never heavy computation without @st.cache_data**
+- ❌ **Never chaotic state management**
 
-## ✅ Checklist Avant Commit
+## ✅ Pre-Commit Checklist
 
-Avant chaque commit, vérifier:
+Before each commit, verify:
 
 - [ ] **Documentation**
-  - [ ] Toutes les nouvelles fonctions ont des docstrings
-  - [ ] Type hints présents partout
-  - [ ] Commentaires pour la logique complexe
+  - [ ] All new functions have docstrings
+  - [ ] Type hints present everywhere
+  - [ ] Comments for complex logic
 
-- [ ] **Fichiers de Suivi**
-  - [ ] SESSION_SUMMARY.md mis à jour
-  - [ ] CHANGELOG.md mis à jour si release
-  - [ ] .env.example à jour si nouvelles variables
+- [ ] **Tracking Files**
+  - [ ] SESSION_SUMMARY.md updated
+  - [ ] CHANGELOG.md updated if release
+  - [ ] .env.example updated if new variables
 
 - [ ] **Code Quality**
-  - [ ] Pas de code dupliqué
-  - [ ] Fonctions < 50 lignes
-  - [ ] Pas de secrets hardcodés
-  - [ ] Imports organisés et triés
+  - [ ] No duplicate code
+  - [ ] Functions < 50 lines
+  - [ ] No hardcoded secrets
+  - [ ] Imports organized and sorted
 
-- [ ] **Tests** (si applicable)
-  - [ ] Tests passent tous
-  - [ ] Nouveaux tests pour nouvelles features
-  - [ ] Coverage maintenu ou amélioré
+- [ ] **Tests** (if applicable)
+  - [ ] All tests pass
+  - [ ] New tests for new features
+  - [ ] Coverage maintained or improved
 
 - [ ] **Git**
-  - [ ] Message de commit suit le format
-  - [ ] .gitignore à jour si nouveaux fichiers à exclure
+  - [ ] Commit message follows format
+  - [ ] .gitignore updated if new files to exclude
 
-## 🎓 Exemples et Templates
+## 🎓 Examples and Templates
 
-Tous les templates et exemples sont disponibles dans le repo `streamlit-claudecode-framework`.
+All templates and examples are available in the `streamlit-claudecode-framework` repo.
 
-Pour démarrer un nouveau projet:
+To start a new project:
 ```bash
-git clone https://github.com/yourusername/streamlit-claudecode-framework.git my-new-project
+git clone https://github.com/sonixz/streamlit-claudecode-framework.git my-new-project
 cd my-new-project
 rm -rf .git
 git init
-# Suivre les instructions du README.md
+# Follow instructions in README.md
 ```
 
-## 📚 Ressources
+## 📚 Resources
 
 - [Streamlit Documentation](https://docs.streamlit.io/)
 - [Pydantic Settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/)
