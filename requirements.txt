@@ -1,0 +1,36 @@
+# Streamlit MVP Framework - Python Dependencies
+# Last Updated: 2026-01-03
+
+# Core Framework
+streamlit==1.29.0
+
+# Configuration Management
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+
+# Data Processing (optional, uncomment if needed)
+# pandas==2.1.4
+# numpy==1.26.2
+
+# Database (optional, uncomment if needed)
+# sqlalchemy==2.0.23
+# psycopg2-binary==2.9.9  # PostgreSQL
+# pymongo==4.6.1  # MongoDB
+
+# API Integrations (optional, uncomment if needed)
+# openai==1.6.1
+# anthropic==0.7.7
+# requests==2.31.0
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+
+# Code Quality (optional, for development)
+# black==23.12.1
+# flake8==7.0.0
+# mypy==1.7.1
+
+# Logging & Monitoring (optional, uncomment if needed)
+# python-json-logger==2.0.7
